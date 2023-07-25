@@ -1,9 +1,8 @@
-import React from "react";
+import "../../NavBar/NavBar.css";
+import ip4y from "../../../assets/ip4y.png";
 import { Link } from "react-router-dom";
-import ip4y from "../../assets/ip4y.png";
-import "./NavBar.css";
 
-function NavBar() {
+function UsersNavBar() {
   return (
     <div className="NavBar">
       <div className="logo">
@@ -13,7 +12,8 @@ function NavBar() {
         <h1>Formulário de Cadastro</h1>
       </div>
       <div>
-        <Link to="/users" className="buttonUser">
+        {/* Substitua o botão pelo Link */}
+        <Link to="/" className="buttonUser">
           Acessar Usuários
         </Link>
       </div>
@@ -21,4 +21,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default UsersNavBar;

@@ -1,5 +1,5 @@
+import FormularioCadastro from "../Form/FormularioCadastro";
 import "./Body.css";
-import FormularioCadastro from "../Form/Form";
 
 function Body() {
   return (

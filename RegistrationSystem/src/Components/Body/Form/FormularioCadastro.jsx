@@ -1,4 +1,4 @@
-import "./Form.css";
+import "./FormularioCadastro.css";
 import React, { useState } from "react";
 
 const FormularioCadastro = () => {
