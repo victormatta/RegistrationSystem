@@ -4,6 +4,17 @@ namespace App\Model;
 
 class ProductionDAO
 {
+
+    public function cpfExists($cpf)
+    {
+        $sql = "SELECT COUNT(*) AS count FROM register WHERE cpf = ?";
+        $stmt = Connection::getConn()->prepare($sql);
+        $stmt->bindValue(1, $cpf);
+        $stmt->execute();
+
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $result['count'] > 0;
+    }
     public function create(Production $p)
     {
         $sql = "INSERT INTO register (cpf, nome, sobrenome, dataNascimento, email, genero) VALUES (?,?,?,?,?,?)";

@@ -2,13 +2,13 @@
 
 require_once "./vendor/autoload.php";
 
-$production = new \App\Model\Production();
-$production->setCpf("333.777.888.25");
-$production->setNome("Teste");
-$production->setSobrenome("API");
-$production->setDataNascimento("1980-08-20");
-$production->setEmail("Teste@Api.com");
-$production->setGenero("Masculino");
+// $production = new \App\Model\Production();
+// $production->setCpf("333.777.888.25");
+// $production->setNome("Teste");
+// $production->setSobrenome("API");
+// $production->setDataNascimento("1980-08-20");
+// $production->setEmail("Teste@Api.com");
+// $production->setGenero("Masculino");
 // $production->setId(3);
 
 
