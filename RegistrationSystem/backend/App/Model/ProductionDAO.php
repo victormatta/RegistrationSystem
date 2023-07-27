@@ -5,7 +5,7 @@ namespace App\Model;
 class ProductionDAO
 {
 
-    public function cpfExists($cpf)
+    public function cpfExists($cpf, $id = null)
     {
         $sql = "SELECT COUNT(*) AS count FROM register WHERE cpf = ?";
         $stmt = Connection::getConn()->prepare($sql);
@@ -71,5 +71,4 @@ class ProductionDAO
         $stmt->execute();
     }
 }
-
 ?>

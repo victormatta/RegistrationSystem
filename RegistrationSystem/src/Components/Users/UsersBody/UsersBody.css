@@ -1,6 +1,22 @@
 .userBody {
     width: 80%;
-    height: 100vh;
+    height: 100%;
     border: 1px solid black;
     margin-top: 100px;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .userGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  .userCard {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 4px 4px 4px 4px rgb(83, 83, 83);
+  }
