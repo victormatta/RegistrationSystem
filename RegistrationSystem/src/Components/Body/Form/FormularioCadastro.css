@@ -1,4 +1,4 @@
-/* No lugar de .form, você pode usar diretamente a tag form */
+
 form {
     display: flex;
     flex-direction: column;
@@ -6,13 +6,13 @@ form {
   }
   
   .text, .data, .labelG {
-    /* Remova as margens de cada seção */
+
     margin: 40px 0;
   }
   
   .text label, .data label, .labelG label {
     font-size: 20px;
-    /* Aplique o mesmo estilo para todos os labels */
+
     margin-bottom: 5px;
     display: flex;
     font-weight: bold;
@@ -22,9 +22,13 @@ form {
     width: 370px;
     height: 25px;
     font-size: 15px;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    /* font-weight: bold; */
   }
   
-  /* .generoFMO não é necessário, pois todos os estilos estão incluídos em .labelG */
+ 
   .labelG {
     font-size: 20px;
     margin-left: -300px;
@@ -32,7 +36,7 @@ form {
   }
   
   .labelG label {
-    /* Adicione um espaçamento entre os labels e os inputs */
+
     margin-right: 10px;
   }
 
@@ -42,8 +46,9 @@ form {
   }
   
   .buttonForm {
-    /* Adicione um espaçamento entre os botões */
+
     margin-top: 70px;
+    margin-bottom: 50px;
   }
   
   /* Estilo para os botões */

@@ -11,9 +11,16 @@ const FormularioCadastro = () => {
     genero: "",
   });
 
+  const [submitted, setSubmitted] = useState(false);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+
+    if (name === "cpf" && value.length > 11) {
+      setFormData({ ...formData, [name]: value.slice(0, 11) });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleDateChange = (event) => {
@@ -26,6 +33,19 @@ const FormularioCadastro = () => {
 
     // Atualiza o estado do formData com a data no formato correto
     setFormData({ ...formData, dataNascimento });
+  };
+
+  const checkCpfExists = async (cpf) => {
+    try {
+      const response = await fetch(
+        `http://localhost/RegistrationSystem/RegistrationSystem/backend/api/checkCpf.php?cpf=${cpf}`
+      );
+      const data = await response.json();
+      return data.exists;
+    } catch (error) {
+      console.error("Erro ao verificar CPF: ", error);
+      throw new Error("Erro ao verificar CPF. Tente novamente.");
+    }
   };
 
   const handleSubmit = (event) => {
@@ -63,18 +83,9 @@ const FormularioCadastro = () => {
         // Aqui você pode lidar com a resposta da API, se necessário
         console.log("Dados enviados com sucesso:", data);
 
-        // Limpa os campos do formulário após o envio
-        setFormData({
-          nome: "",
-          sobrenome: "",
-          email: "",
-          cpf: "",
-          dataNascimento: "",
-          genero: "",
-        });
-
         // Exibe uma mensagem de sucesso para o usuário
         alert("Dados enviados com sucesso!");
+        setSubmitted(true);
       })
       .catch((error) => {
         console.error("Erro ao enviar os dados: ", error);
@@ -82,6 +93,18 @@ const FormularioCadastro = () => {
           "Ocorreu um erro ao enviar os dados. Verifique os campos do formulário e tente novamente."
         );
       });
+  };
+
+  const handleReset = () => {
+    setFormData({
+      nome: "",
+      sobrenome: "",
+      email: "",
+      cpf: "",
+      dataNascimento: "",
+      genero: "",
+    });
+    setSubmitted(false);
   };
 
   return (
@@ -95,6 +118,7 @@ const FormularioCadastro = () => {
             name="nome"
             value={formData.nome}
             onChange={handleChange}
+            placeholder="Digite seu nome"
             required
           />
         </div>
@@ -107,6 +131,7 @@ const FormularioCadastro = () => {
             name="sobrenome"
             value={formData.sobrenome}
             onChange={handleChange}
+            placeholder="Digite seu sobrenome"
             required
           />
         </div>
@@ -119,6 +144,7 @@ const FormularioCadastro = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder="Digite seu E-mail"
             required
           />
         </div>
@@ -131,6 +157,7 @@ const FormularioCadastro = () => {
             name="cpf"
             value={formData.cpf}
             onChange={handleChange}
+            placeholder="Digite seu CPF"
             required
           />
         </div>
@@ -183,7 +210,9 @@ const FormularioCadastro = () => {
 
         <div className="buttonForm">
           <button type="submit">Inserir</button>
-          <button type="submit">Recomeçar</button>
+          <button type="button" onClick={handleReset}>
+            Recomeçar
+          </button>
         </div>
       </form>
     </div>

@@ -41,6 +41,42 @@ function Users() {
       });
   };
 
+  const sendAllUsersData = () => {
+    try {
+      // Cria um objeto JSON contendo todos os dados dos usuários
+      const allUsersData = JSON.stringify(users);
+
+      // Faz a requisição para a API usando o método POST
+      fetch("https://api-teste.ip4y.com.br/cadastro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: allUsersData,
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erro ao enviar dados para a API.");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Dados enviados com sucesso para a API:", data);
+          // Aqui você pode lidar com a resposta da API, se necessário
+          alert("Dados enviados com sucesso para a API!");
+        })
+        .catch((error) => {
+          console.error("Erro ao enviar dados para a API: ", error);
+          alert(
+            "Ocorreu um erro ao enviar os dados para a API. Tente novamente."
+          );
+        });
+    } catch (error) {
+      console.error("Erro ao criar JSON de dados dos usuários: ", error);
+      alert("Ocorreu um erro ao criar JSON de dados dos usuários.");
+    }
+  };
+
   return (
     <div className="userBody">
       <h2>Lista de Usuários:</h2>
@@ -48,102 +84,42 @@ function Users() {
         {users.map((user) => (
           <div key={user.id} className="userCard">
             <div>
-              {user.nome} {user.sobrenome}
+              <h3>
+                {user.nome} {user.sobrenome}
+              </h3>
             </div>
-            <div>Email: {user.email}</div>
-            <div>CPF: {user.cpf}</div>
-            <div>Gênero: {user.genero}</div>
-            <div>Data de Nascimento: {user.dataNascimento}</div>
+            <div>
+              <strong>Email:</strong> <em>{user.email}</em>
+            </div>
+            <div>
+              <strong>CPF:</strong> <em>{user.cpf}</em>
+            </div>
+            <div>
+              <strong>Gênero:</strong> <em>{user.genero}</em>
+            </div>
+            <div>
+              <strong>Data de Nascimento:</strong>{" "}
+              <em>{user.dataNascimento}</em>
+            </div>
             {/* Adicione aqui outros campos que você queira mostrar */}
-            <button onClick={() => handleDelete(user.id)}>Excluir</button>
+            <div className="spaceButton">
+              <button
+                className="userButton"
+                onClick={() => handleDelete(user.id)}
+              >
+                Excluir
+              </button>
+            </div>
           </div>
         ))}
+      </div>
+      <div>
+        <button className="sendButtonContainer" onClick={sendAllUsersData}>
+          Enviar Todos os Usuários para API
+        </button>
       </div>
     </div>
   );
 }
 
 export default Users;
-
-// import React, { useEffect, useState } from "react";
-// import "./UsersBody.css";
-
-// function Users() {
-//   const [users, setUsers] = useState([]);
-//   const [usersToDelete, setUsersToDelete] = useState([]);
-
-//   useEffect(() => {
-//     fetch(
-//       "http://localhost/RegistrationSystem/RegistrationSystem/backend/api/users.php"
-//     )
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error("Erro ao buscar usuários.");
-//         }
-//         return response.json();
-//       })
-//       .then((data) => setUsers(data))
-//       .catch((error) => console.error("Erro ao buscar usuários: ", error));
-//   }, []);
-
-//   const handleDelete = (id) => {
-//     // Adiciona o ID do usuário à lista de usuários a serem excluídos
-//     setUsersToDelete((prevUsersToDelete) => [...prevUsersToDelete, id]);
-//   };
-
-//   const handleSaveChanges = () => {
-//     // Faz a requisição para o backend com os IDs dos usuários a serem excluídos
-//     fetch(
-//       "http://localhost/RegistrationSystem/RegistrationSystem/backend/api/delete_users.php",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ ids: usersToDelete }),
-//       }
-//     )
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error("Erro ao excluir usuários.");
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         console.log(data);
-//         // Atualiza a lista de usuários no estado após a exclusão bem-sucedida
-//         setUsers((prevUsers) =>
-//           prevUsers.filter((user) => !usersToDelete.includes(user.id))
-//         );
-//         // Limpa a lista de usuários a serem excluídos
-//         setUsersToDelete([]);
-//       })
-//       .catch((error) => {
-//         console.error("Erro ao excluir usuários:", error);
-//       });
-//   };
-
-//   return (
-//     <div className="userBody">
-//       <h2>Lista de Usuários:</h2>
-//       <div className="userGrid">
-//         {users.map((user) => (
-//           <div key={user.id} className="userCard">
-//             <div>
-//               {user.nome} {user.sobrenome}
-//             </div>
-//             <div>Email: {user.email}</div>
-//             <div>CPF: {user.cpf}</div>
-//             <div>Gênero: {user.genero}</div>
-//             <div>Data de Nascimento: {user.dataNascimento}</div>
-//             {/* Adicione aqui outros campos que você queira mostrar */}
-//             <button onClick={() => handleDelete(user.id)}>Excluir</button>
-//           </div>
-//         ))}
-//       </div>
-//       <button onClick={handleSaveChanges}>Salvar Alterações</button>
-//     </div>
-//   );
-// }
-
-// export default Users;

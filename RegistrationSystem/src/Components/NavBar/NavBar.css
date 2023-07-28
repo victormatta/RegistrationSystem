@@ -26,7 +26,6 @@
     border-radius: 10px;
     border: none;
     background: linear-gradient(94deg, rgba(0, 198, 63, 1) 0%, rgba(0, 183, 153, 1) 74%);
-    /* margin-right: 30px; */
     cursor: pointer;
     text-align: center; /* Centraliza o texto dentro do botão */
     font-size: 16px;
@@ -36,7 +35,6 @@
   }
 
   .buttonUser:hover {
-    /* Define o novo tamanho do botão ao passar o cursor sobre ele */
     transform: translateY(-5px);
   }
   

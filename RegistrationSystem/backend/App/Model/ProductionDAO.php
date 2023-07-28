@@ -4,19 +4,15 @@ namespace App\Model;
 
 class ProductionDAO
 {
-
-    public function cpfExists($cpf, $id = null)
-    {
-        $sql = "SELECT COUNT(*) AS count FROM register WHERE cpf = ?";
-        $stmt = Connection::getConn()->prepare($sql);
-        $stmt->bindValue(1, $cpf);
-        $stmt->execute();
-
-        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $result['count'] > 0;
-    }
     public function create(Production $p)
     {
+        $cpf = $p->getCpf();
+
+        if ($this->cpfExists($cpf)) {
+            throw new \Exception("CPF já cadastrado no sistema.");
+        }
+
+
         $sql = "INSERT INTO register (cpf, nome, sobrenome, dataNascimento, email, genero) VALUES (?,?,?,?,?,?)";
 
         $stmt = Connection::getConn()->prepare($sql);
@@ -69,6 +65,18 @@ class ProductionDAO
         $stmt->bindValue(1, $id);
 
         $stmt->execute();
+    }
+
+    public function cpfExists($cpf, $id = null)
+    {
+        $sql = "SELECT COUNT(*) AS count FROM register WHERE cpf = ? AND id != ?";
+        $stmt = Connection::getConn()->prepare($sql);
+        $stmt->bindValue(1, $cpf);
+        $stmt->bindValue(2, $id, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $result["count"] > 0;
     }
 }
 ?>
