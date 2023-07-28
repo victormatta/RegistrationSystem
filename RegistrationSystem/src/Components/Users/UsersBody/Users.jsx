@@ -101,7 +101,6 @@ function Users() {
               <strong>Data de Nascimento:</strong>{" "}
               <em>{user.dataNascimento}</em>
             </div>
-            {/* Adicione aqui outros campos que você queira mostrar */}
             <div className="spaceButton">
               <button
                 className="userButton"

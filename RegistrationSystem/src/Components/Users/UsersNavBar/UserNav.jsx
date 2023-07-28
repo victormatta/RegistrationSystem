@@ -12,7 +12,6 @@ function UsersNavBar() {
         <h1>Formulário de Cadastro</h1>
       </div>
       <div>
-        {/* Substitua o botão pelo Link */}
         <Link to="/" className="buttonUser">
           Acessar Formulário
         </Link>

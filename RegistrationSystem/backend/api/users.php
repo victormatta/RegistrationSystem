@@ -7,7 +7,7 @@ $productionDAO = new \App\Model\ProductionDAO();
 // Verifica o método da requisição
 $method = $_SERVER['REQUEST_METHOD'];
 
-// Se a requisição for do tipo OPTIONS, retorne com status 200 (OK) para indicar que o método é permitido
+// Se a requisição for do tipo OPTIONS, retorne com status 204 (OK) para indicar que o método é permitido
 if ($method === 'OPTIONS') {
     header("Access-Control-Allow-Origin: http://localhost:5173");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -39,6 +39,13 @@ if ($method === 'GET') {
         // Retorna um erro informando que todos os campos são obrigatórios
         http_response_code(400);
         echo json_encode(array("message" => "Todos os campos são obrigatórios"));
+        exit;
+    }
+
+    // Verifica se o CPF já existe no banco
+    if ($productionDAO->cpfExists($data['cpf'])) {
+        http_response_code(400);
+        echo json_encode(array("message" => "CPF já cadastrado no sistema."));
         exit;
     }
 
@@ -76,5 +83,3 @@ if ($method === 'GET') {
     echo json_encode(array("message" => "Usuário removido com sucesso"));
     exit;
 }
-
-?>

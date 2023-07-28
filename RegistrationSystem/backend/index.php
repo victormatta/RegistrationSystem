@@ -30,3 +30,5 @@ $productionDAO = new \App\Model\ProductionDAO();
 // endforeach;
 
 ?>
+
+<!-- Usei esse arquivo para testar o backend e a conexão com o banco de dados. -->
