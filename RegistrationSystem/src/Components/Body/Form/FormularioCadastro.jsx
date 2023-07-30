@@ -108,113 +108,115 @@ const FormularioCadastro = () => {
   };
 
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="text">
-          <label htmlFor="nome">Nome:</label>
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            value={formData.nome}
-            onChange={handleChange}
-            placeholder="Digite seu nome"
-            required
-          />
-        </div>
+    <div className="paper">
+      <div className="form">
+        <form onSubmit={handleSubmit}>
+          <div className="text">
+            <label htmlFor="nome">Nome:</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              value={formData.nome}
+              onChange={handleChange}
+              placeholder="Digite seu nome"
+              required
+            />
+          </div>
 
-        <div className="text">
-          <label htmlFor="sobrenome">Sobrenome:</label>
-          <input
-            type="text"
-            id="sobrenome"
-            name="sobrenome"
-            value={formData.sobrenome}
-            onChange={handleChange}
-            placeholder="Digite seu sobrenome"
-            required
-          />
-        </div>
+          <div className="text">
+            <label htmlFor="sobrenome">Sobrenome:</label>
+            <input
+              type="text"
+              id="sobrenome"
+              name="sobrenome"
+              value={formData.sobrenome}
+              onChange={handleChange}
+              placeholder="Digite seu sobrenome"
+              required
+            />
+          </div>
 
-        <div className="text">
-          <label htmlFor="email">E-mail:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Digite seu E-mail"
-            required
-          />
-        </div>
+          <div className="text">
+            <label htmlFor="email">E-mail:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Digite seu E-mail"
+              required
+            />
+          </div>
 
-        <div className="text">
-          <label htmlFor="cpf">CPF:</label>
-          <input
-            type="text"
-            id="cpf"
-            name="cpf"
-            value={formData.cpf}
-            onChange={handleChange}
-            placeholder="Digite seu CPF"
-            required
-          />
-        </div>
+          <div className="text">
+            <label htmlFor="cpf">CPF:</label>
+            <input
+              type="text"
+              id="cpf"
+              name="cpf"
+              value={formData.cpf}
+              onChange={handleChange}
+              placeholder="Digite seu CPF"
+              required
+            />
+          </div>
 
-        <div className="data">
-          <label htmlFor="dataNascimento">Data de Nascimento:</label>
-          <input
-            type="date"
-            id="dataNascimento"
-            name="dataNascimento"
-            value={formData.dataNascimento}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="data">
+            <label htmlFor="dataNascimento">Data de Nascimento:</label>
+            <input
+              type="date"
+              id="dataNascimento"
+              name="dataNascimento"
+              value={formData.dataNascimento}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <label className="labelG">Gênero:</label>
-        <div className="generoFMO">
-          <input
-            type="radio"
-            id="generoMasculino"
-            name="genero"
-            value="Masculino"
-            checked={formData.genero === "Masculino"}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor="generoMasculino">Masculino</label>
-          <input
-            type="radio"
-            id="generoFeminino"
-            name="genero"
-            value="Feminino"
-            checked={formData.genero === "Feminino"}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor="generoFeminino">Feminino</label>
-          <input
-            type="radio"
-            id="generoOutro"
-            name="genero"
-            value="Outro"
-            checked={formData.genero === "Outro"}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor="generoOutro">Outro</label>
-        </div>
+          <label className="labelG">Gênero:</label>
+          <div className="generoFMO">
+            <input
+              type="radio"
+              id="generoMasculino"
+              name="genero"
+              value="Masculino"
+              checked={formData.genero === "Masculino"}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="generoMasculino">Masculino</label>
+            <input
+              type="radio"
+              id="generoFeminino"
+              name="genero"
+              value="Feminino"
+              checked={formData.genero === "Feminino"}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="generoFeminino">Feminino</label>
+            <input
+              type="radio"
+              id="generoOutro"
+              name="genero"
+              value="Outro"
+              checked={formData.genero === "Outro"}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="generoOutro">Outro</label>
+          </div>
 
-        <div className="buttonForm">
-          <button type="submit">Inserir</button>
-          <button type="button" onClick={handleReset}>
-            Recomeçar
-          </button>
-        </div>
-      </form>
+          <div className="buttonForm">
+            <button type="submit">Inserir</button>
+            <button type="button" onClick={handleReset}>
+              Recomeçar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

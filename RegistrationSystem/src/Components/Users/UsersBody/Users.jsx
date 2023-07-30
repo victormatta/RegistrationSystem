@@ -79,7 +79,6 @@ function Users() {
 
   return (
     <div className="userBody">
-      <h2>Lista de Usuários:</h2>
       <div className="userGrid">
         {users.map((user) => (
           <div key={user.id} className="userCard">
@@ -111,11 +110,6 @@ function Users() {
             </div>
           </div>
         ))}
-      </div>
-      <div>
-        <button className="sendButtonContainer" onClick={sendAllUsersData}>
-          Enviar Todos os Usuários para API
-        </button>
       </div>
     </div>
   );

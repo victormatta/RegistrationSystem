@@ -6,11 +6,11 @@ import "./NavBar.css";
 function NavBar() {
   return (
     <div className="NavBar">
-      <div className="logo">
+      {/* <div className="logo">
         <a href="https://www.ip4y.com.br" target="_blank">
           <img src={ip4y} alt="Logo IP4Y" />
         </a>
-      </div>
+      </div> */}
       <div className="formTittle">
         <h1>Formulário de Cadastro</h1>
       </div>

@@ -1,5 +1,10 @@
 body{
-    background-color: rgb(184, 184, 184);
+    /* background-color: rgb(92, 92, 92); */
+    background-image: url(./assets/business-wallpaper-design-template-fc437fecbcbaa96a4cdd3d0d6ae7bc36_screen.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1200px;
+    width: 100%;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
